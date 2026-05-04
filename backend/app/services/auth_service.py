@@ -6,6 +6,7 @@ from fastapi import HTTPException, status
 from app.config import settings
 from app.models.user import User, Role, RoleName
 from app.models.sale import PaymentMethod, PaymentMethodType
+from app.models.product import Category
 
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -88,4 +89,29 @@ def seed_initial_data(db: Session):
         exists = db.query(PaymentMethod).filter(PaymentMethod.type == pm["type"]).first()
         if not exists:
             db.add(PaymentMethod(name=pm["name"], type=pm["type"], is_active=True))
+    db.commit()
+
+    categories_seed = [
+        {"name": "Alimentos y Bebidas",          "description": "Productos alimenticios, bebidas, snacks y conservas"},
+        {"name": "Aseo del Hogar",                "description": "Detergentes, desinfectantes, esponjas y productos de limpieza"},
+        {"name": "Aseo Personal",                 "description": "Shampoo, jabón, desodorante, cuidado bucal y cosmética"},
+        {"name": "Artículos para el Hogar",       "description": "Utensilios de cocina, decoración, muebles y accesorios del hogar"},
+        {"name": "Electrónica y Tecnología",      "description": "Computadores, celulares, accesorios y gadgets"},
+        {"name": "Repuestos Automotrices",        "description": "Piezas y accesorios para vehículos, aceites y lubricantes"},
+        {"name": "Repuestos de Electrodomésticos","description": "Piezas y accesorios para lavadoras, refrigeradores y otros electrodomésticos"},
+        {"name": "Materiales de Construcción",   "description": "Cemento, pinturas, herramientas, fierros y materiales de obra"},
+        {"name": "Ferretería",                    "description": "Tornillos, herramientas manuales, llaves, pernos y accesorios"},
+        {"name": "Jardín y Exterior",             "description": "Plantas, tierra, fertilizantes, herramientas de jardín y outdoor"},
+        {"name": "Ropa y Calzado",                "description": "Vestuario, zapatos, accesorios de moda y textiles"},
+        {"name": "Juguetes y Juegos",             "description": "Juguetes infantiles, juegos de mesa y artículos recreativos"},
+        {"name": "Deportes y Fitness",            "description": "Equipamiento deportivo, ropa deportiva y accesorios fitness"},
+        {"name": "Librería y Papelería",          "description": "Cuadernos, lápices, artículos de oficina y escolares"},
+        {"name": "Medicamentos y Salud",          "description": "Medicamentos de venta libre, vitaminas y productos de salud"},
+        {"name": "Mascotas",                      "description": "Alimentos, accesorios y cuidado para animales domésticos"},
+        {"name": "Otros",                         "description": "Productos varios no clasificados en otras categorías"},
+    ]
+    for cat in categories_seed:
+        exists = db.query(Category).filter(Category.name == cat["name"]).first()
+        if not exists:
+            db.add(Category(name=cat["name"], description=cat["description"], is_active=True))
     db.commit()
