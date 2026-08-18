@@ -26,7 +26,7 @@ Gestión de stock en tiempo real con alertas de quiebre.
 
 ### 🛒 Módulo Generación de Reportes
 Gestión de stock en tiempo real con alertas de quiebre.
-![RRHH](./assets/screenshots/reportes_mi_pymepro.png)
+![Reportes](./assets/screenshots/reportes_mi_pymepro.png)
 
 ### 🧾 Integración SII Chile
 Generación de boletas electrónicas y cumplimiento tributario.
