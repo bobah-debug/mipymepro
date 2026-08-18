@@ -8,6 +8,10 @@ MiPymePro es un sistema integral de planificación de recursos empresariales dis
 Panel de control con indicadores clave (Ventas, Gastos, Utilidades).
 ![Dashboard Principal](./assets/screenshots/inicio_mi_pymepro.png)
 
+<p align="center">
+  <img src="./assets/screenshots/inicio_mi_pymepro.png" width="800" title="Dashboard de Gestión">
+</p>
+
 ### 🛒 Módulo de Ventas
 Gestión de ventas con todo medio de pago.
 ![Ventas](./assets/screenshots/punto_venta_mi_pymepro.png)
